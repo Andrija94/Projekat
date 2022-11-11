@@ -1,10 +1,19 @@
 import Tickets
-import Authorization
+from Authorization import login, menuSalesman, menuManager
 
 
 def main():
-    Authorization.login()
-    return
+    users = open("..\\resources\\users.txt", "r")
+    usersList = []
+    for user in users:
+        usersList.append(user.strip().split("|"))
+    while True:
+        username, password, usertype = login(usersList)
+        if usertype == "m":
+            return menuManager()
+        else:
+            menuSalesman()
+        break
 
 
 if __name__ == "__main__":
