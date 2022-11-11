@@ -3,8 +3,8 @@ import Authorization
 
 
 def main():
-    print("haha")
-    return 0
+    Authorization.login()
+    return
 
 
 if __name__ == "__main__":

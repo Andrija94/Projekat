@@ -24,7 +24,7 @@ def login():
     print("Prijava nije uspesna")
     return
 
-login()
+
 
 
 
