@@ -1,6 +1,22 @@
-def menuManager():
-    print("Meni za menadzera")
-    return
+def menuManager(usersList):
+    while True:
+        print("0 ==> Izlaz iz programa\n"
+              "1 ==> Pretraga letova\n"
+              "9 ==> Odjava")
+        try:
+            command = int(input("Unesite opciju: "))
+            if command == 0:
+                return
+            elif command == 1:
+                Pretraga()
+            elif command == 9:
+                login(usersList)
+        except:
+            print("Pogresan unos")
+
+
+def Pretraga():
+    print("pretraga")
 
 
 def menuSalesman():
@@ -21,4 +37,3 @@ def login(usersList):
                     print("Prijavili ste se kao prodavac")
                 return username, password, user[0]
         print("Prijava nije uspesna")
-

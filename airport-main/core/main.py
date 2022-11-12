@@ -1,5 +1,5 @@
 import Tickets
-from Authorization import login, menuSalesman, menuManager
+from Authorization import *
 
 
 def main():
@@ -10,7 +10,7 @@ def main():
     while True:
         username, password, usertype = login(usersList)
         if usertype == "m":
-            return menuManager()
+            return menuManager(usersList)
         else:
             menuSalesman()
         break
