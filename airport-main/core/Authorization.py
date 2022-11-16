@@ -1,16 +1,17 @@
-def menuManager(usersList):
+def menuManager():
     while True:
         print("0 ==> Izlaz iz programa\n"
               "1 ==> Pretraga letova\n"
+              "2 ==> Istorija\n"
               "9 ==> Odjava")
         try:
             command = int(input("Unesite opciju: "))
             if command == 0:
-                return
+                return False
             elif command == 1:
                 Pretraga()
             elif command == 9:
-                login(usersList)
+                return True
         except:
             print("Pogresan unos")
 
@@ -20,8 +21,21 @@ def Pretraga():
 
 
 def menuSalesman():
-    print("Meni za prodavca")
-    return
+    while True:
+        print("0 ==> Izlaz iz programa\n"
+              "1 ==> Pretraga\n"
+              "2 ==> Unos karte\n"
+              "3 ==> Izmena karte\n"
+              "4 ==> Brisanje karte\n"
+              "9 ==> Odjava\n")
+        try:
+            command = int(input("Unesite opciju: "))
+            if command == 0:
+                return False
+            elif command == 9:
+                return True
+        except:
+            print("Pogresan unos")
 
 
 def login(usersList):

@@ -7,13 +7,16 @@ def main():
     usersList = []
     for user in users:
         usersList.append(user.strip().split("|"))
+    username, password, usertype = login(usersList)
     while True:
-        username, password, usertype = login(usersList)
         if usertype == "m":
-            return menuManager(usersList)
+            if not menuManager():
+                return
+            login(usersList)
         else:
-            menuSalesman()
-        break
+            if not menuSalesman():
+                return
+            login(usersList)
 
 
 if __name__ == "__main__":
