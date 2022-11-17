@@ -1,4 +1,11 @@
-def menuManager():
+def load_users():
+    file_users = open("..\\resources\\users.txt", "r")
+    users_list = []
+    for user in file_users:
+        users_list.append(user.strip().split("|"))
+    return users_list
+
+def menu_manager():
     while True:
         print("0 ==> Izlaz iz programa\n"
               "1 ==> Pretraga letova\n"
@@ -9,18 +16,15 @@ def menuManager():
             if command == 0:
                 return False
             elif command == 1:
-                Pretraga()
+                pretraga_letova()
             elif command == 9:
                 return True
         except:
             print("Pogresan unos")
 
 
-def Pretraga():
-    print("pretraga")
 
-
-def menuSalesman():
+def menu_salesman():
     while True:
         print("0 ==> Izlaz iz programa\n"
               "1 ==> Pretraga\n"
@@ -38,11 +42,11 @@ def menuSalesman():
             print("Pogresan unos")
 
 
-def login(usersList):
+def login(list):
     while True:
         username = input("Unesite korisnicko ime: ")
         password = input("Unesite lozinku: ")
-        for user in usersList:
+        for user in list:
             if username == user[1] and password == user[2]:
                 print("Prijava je uspesna")
                 if user[0] == "m":

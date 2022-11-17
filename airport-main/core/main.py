@@ -3,20 +3,17 @@ from Authorization import *
 
 
 def main():
-    users = open("..\\resources\\users.txt", "r")
-    usersList = []
-    for user in users:
-        usersList.append(user.strip().split("|"))
-    username, password, usertype = login(usersList)
+    users_list = load_users()
+    username, password, usertype = login(users_list)
     while True:
         if usertype == "m":
-            if not menuManager():
+            if not menu_manager():
                 return
-            login(usersList)
+            login(users_list)
         else:
-            if not menuSalesman():
+            if not menu_salesman():
                 return
-            login(usersList)
+            login(users_list)
 
 
 if __name__ == "__main__":
