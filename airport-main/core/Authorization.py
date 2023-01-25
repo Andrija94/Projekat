@@ -1,4 +1,5 @@
 from Tickets import *
+from Flights import *
 
 
 def load_users():  # funkcija ucitava sve korisnike iz fajla i pravi listu sa njihovim kredencijalima i tipom korisnika
@@ -28,7 +29,7 @@ def menu_manager():  # funkcija koja sadrzi opcije kojima moze da pristupi menad
             else:
                 print("Pokusajte ponovo")
         except:
-            print("Pogresan unos")
+            print("Pogresan unos, unesite broj!")
 
 
 def menu_salesman():  # funkcija koja sadrzi opcije kojima moze da pristupi prodavac
@@ -47,17 +48,18 @@ def menu_salesman():  # funkcija koja sadrzi opcije kojima moze da pristupi prod
                 x = search(flights_call)
                 if x == 0:
                     return True
-            # elif command == 2:
-            #     # ticket_input(flights_call, tickets_call)
+            elif command == 2:
+                ticket_input(flights_call)
             elif command == 9:
                 return True
             else:
                 print("Pokusajte ponovo")
         except:
-            print("Pogresan unos")
+            print("Pogresan unosn unesite broj!")
 
 
-def login(ulist):  # funkcija koristi listu svih korisnika i omogucava pristup programu unosom odgovarajucih kredencijala
+def login(
+        ulist):  # funkcija koristi listu svih korisnika i omogucava pristup programu unosom odgovarajucih kredencijala
     while True:
         username = input("Unesite korisnicko ime: ")
         password = input("Unesite lozinku: ")
@@ -68,5 +70,5 @@ def login(ulist):  # funkcija koristi listu svih korisnika i omogucava pristup p
                     print("Prijavili ste se kao menadzer")
                 elif user[0] == "p":
                     print("Prijavili ste se kao prodavac")
-                return username, password, user[0]  # funkcija vraca tri vrednosti: korisnicko ime, sifru i tip korisnika
+                return username, password, user[0]  # funkcija vraca vrednosti: korisnicko ime, sifru i tip korisnika
         print("Prijava nije uspesna")

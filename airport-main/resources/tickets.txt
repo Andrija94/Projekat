@@ -1,3 +1,2 @@
-AA0000|AER|KZN|2:15|7:15|Aerocondor|pon|19|8|100
-AA0000|AER|KZN|2:15|7:15|Aerocondor|pon|1|1|100
-AA0000|AER|KZN|2:15|7:15|Aerocondor|pon|2|2|100
+AA0000|AER|KZN|2:15|7:15|Aerocondor|pon|1|1|100|1
+AA0000|AER|KZN|2:15|7:15|Aerocondor|pon|2|2|100|2
