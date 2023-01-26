@@ -11,7 +11,7 @@ def load_tickets():  # funkcija koja ce ucitati sve karte iz fajla tickets.txt
     return list_of_tickets
 
 
-def ticket_save(ticket):
+def ticket_save(ticket):  # funkcija prikazuje izabranu kartu i cuva je u fajl tickets.txt
     print('Rezervisana je karta:')
     print("{:6}|{}|{}|{}|{:15}|{:25}|{:5}|{:5}|{:10}|{}|{}".format('ID', 'Polazak', 'Dolazak', 'Vreme polaska',
                                                                    'Vreme dolaska',
@@ -32,7 +32,17 @@ def ticket_save(ticket):
     file_tickets.write(ticket_to_save + '\n')
 
 
-def ticket_input(flight_list):
+def ticket_remove(tickets):
+    file_tickets = open("..\\resources\\tickets.txt", "r+")
+    file_tickets.truncate(0)
+    for ticket in tickets:
+        t = "{id}|{polazak}|{dolazak}|{vreme_polaska}|{vreme_dolaska}|{aviokompanija}|" \
+            "{dan}|{red}|{sediste}|{cena}|{broj_karte}".format(**ticket)
+        file_tickets.write(t + "\n")
+    print("Karta je uspesno izbrisana!")
+
+
+def ticket_input(flight_list):  # funkcija za unos karte, radi proveru da li karta postoji ili ne
     ticket_list = load_tickets()
     ticket_id = input("Unesite ID leta u formatu XX1234: ")
     day = input("Unesite dan leta(prva tri slova): ")
@@ -43,8 +53,13 @@ def ticket_input(flight_list):
                 seat == int(ticket['sediste']):
             print('Karta je vec rezervisana!')
             return
-    ticket_number = len(ticket_list) + 1
-    for flight in flight_list:
+
+    if not ticket_list:
+        ticket_number = len(ticket_list) + 1
+    else:
+        ticket_number = int(ticket_list[len(ticket_list) - 1]["broj_karte"]) + 1
+
+    for flight in flight_list:  # ukoliko karta ne postoji u fajlu onda izvlaci podatke za taj let
         days = flight['dani'].strip().split(',')
         seats = flight['sedista'].strip().split('/')
         if ticket_id == flight['id'] and day in days and 0 < row <= int(seats[0]) and 0 < seat <= int(seats[1]):
@@ -54,3 +69,15 @@ def ticket_input(flight_list):
             ticket_save(result)
             return
     print("Nepostojeci let, pokusajte ponovo!")
+
+
+def ticket_delete():
+    ticket_list = load_tickets()
+    ticket_number = int(input("Unesite broj karte: "))
+    for ticket in ticket_list:
+        if ticket_number == int(ticket["broj_karte"]):
+            ticket_list.remove(ticket)
+            ticket_remove(ticket_list)
+            return
+    print("Karta ne postoji u bazi!")
+    return

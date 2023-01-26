@@ -50,6 +50,8 @@ def menu_salesman():  # funkcija koja sadrzi opcije kojima moze da pristupi prod
                     return True
             elif command == 2:
                 ticket_input(flights_call)
+            elif command == 4:
+                ticket_delete()
             elif command == 9:
                 return True
             else:
